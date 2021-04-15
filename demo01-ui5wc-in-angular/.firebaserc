@@ -1,0 +1,12 @@
+{
+  "projects": {
+    "default": "module-federation"
+  },
+  "targets": {
+    "module-federation": {
+      "hosting": {
+        "demo01-ui5wc-in-angular": ["demo01-ui5wc-in-angular"]
+      }
+    }
+  }
+}
