@@ -1,0 +1,167 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "com.sap.sapui5POC",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "/employeeOdata/xsodata/service.xsodata/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			},
+			"rfqs": {
+				"uri": "model/rfqs.json",
+				"type": "JSON"
+			},
+			"suppliers": {
+				"uri": "model/suppliers.json",
+				"type": "JSON"
+			},
+			"items": {
+				"uri": "model/items.json",
+				"type": "JSON"
+			}
+		},
+		"sourceTemplate": {
+			"id": "sap.ui.ui5-template-plugin.1worklist",
+			"version": "1.74.1"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://task",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "com.sap.sapui5POC.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.66.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.f": {},
+				"sap.ui.table": {},
+				"sap.ui.unified": {},
+				"sap.ui.layout": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "com.sap.sapui5POC.i18n.i18n"
+				}
+			},
+			"rfqs": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "rfqs"
+			},
+			"suppliers": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "suppliers"
+			},
+			"items": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "items"
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "com.sap.sapui5POC.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"bypassed": {
+					"target": [
+						"notFound"
+					]
+				},
+				"async": true
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "worklist",
+					"target": [
+						"worklist"
+					]
+				},
+				{
+					"pattern": "{viewObj},{objectId},{totalRFQS}/:?query:",
+					"name": "object",
+					"target": [
+						"object"
+					]
+				},
+				{
+					"pattern": "supplier/{supplierContactsObj},{supplierId},{supplierName},{totalSuppliers}",
+					"name": "supplier",
+					"target": [
+						"supplier"
+					]
+				}
+			],
+			"targets": {
+				"worklist": {
+					"viewName": "Worklist",
+					"viewId": "worklist",
+					"viewLevel": 1,
+					"title": "{i18n>worklistViewTitle}"
+				},
+				"object": {
+					"viewName": "Object",
+					"viewId": "object",
+					"viewLevel": 2,
+					"title": "{i18n>objectViewTitle}"
+				},
+				"objectNotFound": {
+					"viewName": "ObjectNotFound",
+					"viewId": "objectNotFound"
+				},
+				"notFound": {
+					"viewName": "NotFound",
+					"viewId": "notFound"
+				},
+				"supplier": {
+					"viewId": "supplier",
+					"viewType": "XML",
+					"viewName": "Supplier"
+				}
+			}
+		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.2.0"
+	}
+}

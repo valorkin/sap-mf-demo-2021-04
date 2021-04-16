@@ -1,0 +1,106 @@
+<mvc:View controllerName="com.sap.sapui5POC.controller.Object" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout" xmlns:ui="sap.ui.Table" xmlns:f="sap.ui.layout.form" xmlns:semantic="sap.f.semantic">
+	<Page title="RFQ - {objectView>/title}" showNavButton="true" navButtonPress=".onLinkPressed">
+		<headerContent>
+			<Button id="save" text="Ok" type="Emphasized" press=".onLinkPressed"/>
+			<Button id="cancel" text="Cancel" press=".onLinkPressed"/>
+		</headerContent>
+		<content>
+			<IconTabBar id="IconTabBar" select=".onTabSelect" binding="{Object}" selectedKey="{objectView>/selectedTabKey}">
+				<items>
+					<IconTabFilter id="idTab1" text="EventInfo" key="Info">
+						<l:VerticalLayout width="100%">
+							<l:content>
+								<f:SimpleForm singleContainerFullSize="false">
+									<f:content>
+										<Label text="Rquest For Quotation Name"/>
+										<Input value="{objectView>/title}" valueLiveUpdate="true" enabled="false" width="100%"/>
+									</f:content>
+								</f:SimpleForm>
+								<f:SimpleForm singleContainerFullSize="false">
+									<f:content>
+										<core:Title text="Organization Details"/>
+										<Label text="Name"/>
+										<Text text="{data>/organization}"/>
+										<Label text="Unique ID of Org."/>
+										<Text text="{data>/orgId}"/>
+										<Label text="Adapter for Org"/>
+										<Label text="Event Date"/>
+										<Text text="{data>/passwordAdapter}"/>
+									</f:content>
+								</f:SimpleForm>
+								<f:SimpleForm singleContainerFullSize="false">
+									<f:content>
+										<core:Title text="Owner Details"/>
+										<Label text="Contact"/>
+										<Text text="Owner"/>
+										<Label text="Owner Name"/>
+										<Text text="{data>/name}"/>
+										<Label text="Email Address"/>
+										<Text text="{data>/emailAddress}"/>
+										<Label text="Phone Number"/>
+										<Text text="{data>/phone}"/>
+									</f:content>
+								</f:SimpleForm>
+							</l:content>
+						</l:VerticalLayout>
+					</IconTabFilter>
+					<IconTabFilter id="idTab2" text="Suppliers" key="Suppliers">
+						<content>
+							<Table id="suppliersTable" growing="true" updateFinished="onUpdateFinished('suppliers')"  growingScrollToLoad="true"
+							growingThreshold="5" inset="false" items="{path: 'suppliers>/'}">
+								<columns>
+									<Column><Text text="S.NO"/></Column>
+									<Column><Text text="ID"/></Column>
+									<Column><Text text="Name"/></Column>
+									<Column><Text text="Address"/></Column>
+									<Column><Text text="Contacts"/></Column>
+								</columns>
+								<items>
+									<ColumnListItem counter="1" id="suppliers">
+										<cells>
+											<Text id="text10" maxLines="0" text="{suppliers>index}"/>
+											<Text id="text6" maxLines="0" text="{suppliers>id}"/>
+											<Link id="text7" text="{suppliers>name}" press=".onItemPress"/>
+											<ObjectIdentifier badgePeople="true" title="{suppliers>address/phone}" text="{suppliers>address/city}"/>
+											<Text id="text9" maxLines="0" text="{suppliers>contacts/0/emailAddress}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</content>
+					</IconTabFilter>
+					<IconTabFilter id="idTab3" text="Items" key="Items">
+						<content>
+							<Table id="itemsTable" growing="true" updateFinished="onUpdateFinished('items')"  growingScrollToLoad="true"
+							growingThreshold="5" inset="false" 	items="{
+								path: 'items>/'
+								}">
+								<columns>
+									<Column><Text text="S.NO"/></Column>
+									<Column><Text text="ID"/></Column>
+									<Column><Text text="Name"/></Column>
+									<Column><Text text="Price($)"/></Column>
+									<Column><Text text="Quantity"/></Column>
+									<Column><Text text="ExtendedPrice($)"/></Column>
+								</columns>
+								<items>
+									<ColumnListItem id="item1">
+										<cells>
+											<Text id="text11" maxLines="0" text="{items>index}"/>
+											<Text id="text1" maxLines="0" text="{items>id}"/>
+											<Text id="text2" maxLines="0" text="{items>name}"/>
+											<Text id="text3" maxLines="0" text="{items>price}"/>
+											<Text id="text4" maxLines="0" text="{items>quantity}"/>
+											<Text id="text5" maxLines="0" text="{items>extendedPrice}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</content>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</content>
+	</Page>
+</mvc:View>

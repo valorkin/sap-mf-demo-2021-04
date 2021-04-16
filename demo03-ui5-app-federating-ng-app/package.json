@@ -1,0 +1,65 @@
+{
+  "name": "sapui5POC",
+  "version": "0.0.1",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "build": "run-s build:all build:sc copy-mockdata",
+    "build:all": "ui5 build --all --clean-dest",
+    "build:preload": "ui5 build",
+    "build:sc": "ui5 build self-contained",
+    "copy-mockdata": "cp mockdata/*.json dist/model",
+    "lint": "eslint webapp",
+    "karma": "karma start",
+    "karma-ci": "rimraf coverage && karma start karma-ci.conf.js",
+    "serve": "serve dist",
+    "start": "npm run start:dist",
+    "start:dev": "ui5 serve --open index.html",
+    "start:dist": "ui5 serve --config ui5-dist.yaml --open index.html",
+    "start:dist-h2": "ui5 serve --config ui5-dist.yaml --h2 --open index.html",
+    "test": "npm run lint && npm run karma-ci",
+    "upgrade-code": "ui5-migration migrate webapp"
+  },
+  "dependencies": {
+    "@openui5/sap.f": "1.73.1",
+    "@openui5/sap.m": "1.73.1",
+    "@openui5/sap.ui.core": "1.73.1",
+    "@openui5/sap.ui.table": "1.73.1",
+    "@openui5/sap.ui.unified": "1.73.1",
+    "@openui5/themelib_sap_fiori_3": "1.73.1"
+  },
+  "devDependencies": {
+    "@openui5/ts-types": "^1.60.5",
+    "@ui5/cli": "^1.14.0",
+    "@ui5/migration": "^0.1.2",
+    "deploy-to-gh-pages": "^1.3.7",
+    "eslint": "^6.8.0",
+    "gh-pages": "^2.2.0",
+    "karma": "^4.4.1",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-coverage": "^2.0.1",
+    "karma-ui5": "^1.1.0",
+    "npm-run-all": "^4.1.5",
+    "serve": "^6.3.1",
+    "ui5-middleware-livereload": "^0.1.6",
+    "ui5-middleware-livetranspile": "^0.1.5",
+    "ui5-middleware-servestatic": "^0.1.4",
+    "ui5-middleware-simpleproxy": "^0.1.5",
+    "ui5-task-transpile": "^0.1.3"
+  },
+  "ui5": {
+    "dependencies": [
+      "@openui5/sap.ui.core",
+      "@openui5/sap.ui.unified",
+      "@openui5/sap.ui.table",
+      "@openui5/sap.m",
+      "@openui5/sap.f",
+      "@openui5/themelib_sap_fiori_3",
+      "ui5-middleware-livereload",
+      "ui5-middleware-livetranspile",
+      "ui5-middleware-servestatic",
+      "ui5-middleware-simpleproxy",
+      "ui5-task-transpile"
+    ]
+  }
+}

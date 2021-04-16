@@ -1,0 +1,52 @@
+<mvc:View controllerName="com.sap.sapui5POC.controller.Worklist" xmlns="sap.ui.table" xmlns:mvc="sap.ui.core.mvc" xmlns:u="sap.ui.unified"
+		  xmlns:webc="webc"
+		  xmlns:c="sap.ui.core" xmlns:m="sap.m" xmlns:p="sap.ui.commons" height="100%">
+	<m:Page title="3. UI5 app federating Angular application" showHeader="true" class="sapUiContentPadding">
+		<m:content>
+			<webc:Injector
+					iframeuri="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/cart/webapp/index.html?sap-ui-theme=sap_fiori_3"
+					iframeattrs="{height: '500px'}"/>
+			<Table id="table" selectionMode="None" rows="{/}" visibleRowCountMode="Fixed"
+				visibleRowCount="50" columnResize="onColumnResize" ariaLabelledBy="title">
+				<extension>
+					<m:OverflowToolbar>
+						<m:Title id="title" text="RFQS"/>
+						<m:ToolbarSpacer/>
+					</m:OverflowToolbar>
+				</extension>
+				<columns>
+					<Column width="{ui>/widths/index}" filterProperty="index" resizable="true" autoResizable="true">
+						<m:Label text="S.NO"/>
+						<template>
+							<m:Text text="{index}" wrapping="false"/>
+						</template>
+					</Column>
+					<Column width="{ui>/widths/title}" filterProperty="title" resizable="true" autoResizable="true">
+						<m:Label text="Title"/>
+						<template>
+							<m:Link text="{title}" wrapping="false" press=".onPress"/>
+						</template>
+					</Column>
+					<Column width="{ui>/widths/id}" resizable="true" filterProperty="id">
+						<m:Label text="Id"/>
+						<template>
+							<m:Text text="{internalId}" wrapping="false"/>
+						</template>
+					</Column>
+					<Column width="{ui>/widths/status}" resizable="true" filterProperty="status">
+						<m:Label text="Status"/>
+						<template>
+							<m:Text text="{status}" wrapping="false"/>
+						</template>
+					</Column>
+				</columns>
+				<footer>
+					<m:OverflowToolbar>
+						<m:ToolbarSpacer/>
+						<!--<m:PagingButton positionChange="pagination" position="1" count="10" id="pagingBtn" nextButtonTooltip="next" previousButtonTooltip="previous"/>-->
+					</m:OverflowToolbar>
+				</footer>
+			</Table>
+		</m:content>
+	</m:Page>
+</mvc:View>
