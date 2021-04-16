@@ -1,6 +1,6 @@
-## This repository contains source code for 3 scenarios
+## This repository contains source code for 3 of the 4 below scenarios
 
-![scenarious](./_readme/scenarious.png)
+![scenarios](./_readme/scenarious.png)
 
 ### Deployed versions
 1. [Angular App consuming UI5 web component](https://demo01-ui5wc-in-angular.web.app/)
@@ -73,7 +73,7 @@ And MF launcher injects Angular application via managed configuration
 ```
 
 #### 3. UI5 application federating Angular application
-Module Federation writting in Angular and build with Angular Elements as Web Component injected in UI5 application, distributed via firebase hosting, but could be distributed via npm.
+Module Federation written in Angular and built with Angular Elements as Web Component injected in UI5 application, distributed via firebase hosting, but could also be distributed via npm.
 
 ```html
 <script src="https://ng-el-injector.web.app/ngel-injector.min.js" defer></script>
