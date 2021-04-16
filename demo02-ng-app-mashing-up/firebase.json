@@ -1,0 +1,17 @@
+{
+  "hosting": [{
+    "target": "demo02-ng-mashing-app-with-ui5",
+    "public": "dist/demo02-ng-app-mashing-up",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }]
+}

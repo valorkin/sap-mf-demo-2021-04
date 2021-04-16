@@ -1,0 +1,12 @@
+{
+  "projects": {
+    "default": "module-federation"
+  },
+  "targets": {
+    "module-federation": {
+      "hosting": {
+        "demo02-ng-mashing-app-with-ui5": ["demo02-ng-mashing-app-with-ui5"]
+      }
+    }
+  }
+}
