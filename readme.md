@@ -1,4 +1,4 @@
-## This repository contains source code for 3 scenarious
+## This repository contains source code for 3 scenarios
 
 ![scenarious](./_readme/scenarious.png)
 
