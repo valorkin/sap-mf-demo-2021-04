@@ -129,3 +129,21 @@ And used in XML view
         iframeuri="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/cart/webapp/index.html?sap-ui-theme=sap_fiori_3"
         iframeattrs="{height: '500px'}"/>
 ```
+
+#### 4. Communication matrix with Module Federation
+
+- *Note*: we are injecting MF container `from` application in `to` application
+- `post` - `windows.postMessages` is available in any combination
+- `native` is a native way of communicating with components for `to` application platform 
+- `generate` we can generate a component native to host `to` application
+- `TBR` - to be researched
+
+| to \ from     | Angular   | UI5       | WebComponents     | iFrames   |
+|---            |---        |---        |---                |---        |
+| Angular       | native    | generate  | native            | postM     |
+| UI5           | generate  | native    | custom\generate   | postM     |
+| WebComponents | native    | `TBR`     | native            | postM     |
+| iFrames       | postM     | postM     | postM             | postM     |
+
+#### 5. Module Federation advantages over iFrames
+
