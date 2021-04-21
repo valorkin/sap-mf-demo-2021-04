@@ -147,4 +147,16 @@ And used in XML view
 
 #### 5. Module Federation advantages over iFrames
 
+- shared js libraries (on average any page is under 10kB gziped + shared libs)
+- shared styles
+- ability to communicate natively between containers and not be limited to `postMessages`
+- ability to generate components native to host application (integration at build time)
+
 #### 6. Notes on UI5 web components guidlines imports and implementation
+
+The guidline to use ui5 webcomponents is to import js file with a side effects
+```js 
+import "@ui5/webcomponents/dist/Button";
+```
+there are tslint rule to [no-import-side-effect](https://palantir.github.io/tslint/rules/no-import-side-effect/)
+and in the most of the bundlers should we should keep it mind that such import can be treeshaked, read more https://webpack.js.org/guides/tree-shaking/#mark-the-file-as-side-effect-free
