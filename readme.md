@@ -147,3 +147,4 @@ And used in XML view
 
 #### 5. Module Federation advantages over iFrames
 
+#### 6. Notes on UI5 web components guidlines imports and implementation
